@@ -3,24 +3,30 @@ Question 1: Can you get all data about movies?
 SELECT * FROM movies;
 
 Question 2: How do you get all data about directors?
+
 SELECT * FROM directors;
 
 Question 3: Check how many movies are present in iMDB.
+
 SELECT COUNT (*) from movies;
 
 
 Question 4: Find these 3 directors: James Cameron ; Luc Besson ; John Woo
+
 SELECT * from directors where name == 'James Cameron' or name =='Luc Besson' or name =='John Woo';
 
 
 Question 5: Find all directors with name starting with Steven.
+
 SELECT * from directors where name LIKE 'Steven%';
 
 Question 6: Count female directors.
- SELECT COUNT(*) from directors where gender == 1;
+
+SELECT COUNT(*) from directors where gender == 1;
 
 
 Question 7: Find the name of the 10th first women directors?
+
  SELECT name
 FROM directors
 WHERE gender == 1
@@ -29,12 +35,14 @@ limit 1 OFFSET 10;
 
 
 Question 8: What are the 3 most popular movies?
+
 SELECT original_title 
 FROM movies
 ORDER by popularity desc   
 limit 3;
 
 Question 9: What are the 3 most bankable movies?
+ 
  SELECT original_title 
 FROM movies
 ORDER by budget desc   
@@ -42,6 +50,7 @@ limit 3;
 
 
 Question 10: What is the most awarded average vote since the January 1st, 2000?
+ 
  SELECT original_title FROM movies
 WHERE release_date > '2000-01-01'
 ORDER by vote_average DESC
@@ -50,6 +59,7 @@ LIMIT 1;
 
 
 Question 11: Which movie(s) were directed by Brenda Chapman?
+
 SELECT original_title FROM movies 
 JOIN directors ON directors.id = movies.director_id
 WHERE directors.name = 'Brenda Chapman';
@@ -64,6 +74,7 @@ limit 1;
 
 
 Question 13: Whose director is the most bankable?
+
 SELECT name FROM directors 
 JOIN movies ON directors.id = movies.director_id
 GROUP BY director_id ORDER BY sum(budget) DESC
